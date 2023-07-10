@@ -7,16 +7,9 @@
   <arg name="load_gripper" default="true" />
   <arg name="transmission" default="position" />
 
-  <include file="$(find franka_control)/launch/franka_control.launch" pass_all_args="true">
+  <include file="$(find franka_ws)/launch/moveit_idle.launch" pass_all_args="true">
   </include>
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="position_joint_trajectory_controller"/>
-
-  <include file="$(find fr3_moveit_config)/launch/demo.launch" pass_all_args="true">
-    <arg name="load_robot_description" value="false" />
-    <!-- MoveItSimpleControllerManager provides ros_control's JointTrajectory controllers
-         as well as GripperCommand actions -->
-    <arg name="moveit_controller_manager" value="simple" />
-  </include>
 
 </launch>
