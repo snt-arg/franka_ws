@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<launch>
+  <!-- fr3 specific options -->
+  <arg name="robot_ip" default="172.16.0.2" />
+  <arg name="robot" value="fr3" doc="choose your robot. Possible values: [panda, fr3]"/>
+  <arg name="arm_id" default="$(arg robot)" />
+  <arg name="load_gripper" default="true" />
+  <arg name="transmission" value="position" />
+  <arg name="gazebo" default="true" />
+  
+  <rosparam file="$(find franka_ws)/config/controllers.yaml" subst_value="true" />
+
+  <include file="$(find franka_ws)/launch/moveit_idle.launch" pass_all_args="true">
+  </include>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="position_joint_controller"/>
+
+</launch>
