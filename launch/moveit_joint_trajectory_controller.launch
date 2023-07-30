@@ -6,7 +6,8 @@
   <arg name="arm_id" default="$(arg robot)" />
   <arg name="load_gripper" default="true" />
   <arg name="transmission" default="position" />
-
+  <arg name="gazebo" default="true" />
+  
   <include file="$(find franka_ws)/launch/moveit_idle.launch" pass_all_args="true">
   </include>
 
