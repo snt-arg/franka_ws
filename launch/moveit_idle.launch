@@ -7,6 +7,8 @@
   <arg name="load_gripper" default="true" />
   <arg name="transmission" default="position" />
   <arg name="gazebo" default="false" />
+  <arg name="use_rviz" default="true" />
+
 
   <group if="$(arg gazebo)">
     <include file="$(find franka_gazebo)/launch/$(arg arm_id).launch">
